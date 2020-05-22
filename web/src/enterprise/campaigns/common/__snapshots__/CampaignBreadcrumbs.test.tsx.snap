@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CampaignBreadcrumbs existing 1`] = `
+<nav
+  aria-label="breadcrumb"
+  className=""
+>
+  <ol
+    className="breadcrumb"
+  >
+    <li
+      className="breadcrumb-item"
+    >
+      <AnchorLink
+        to="/campaigns"
+      >
+        Campaigns
+      </AnchorLink>
+    </li>
+    <li
+      className="breadcrumb-item active"
+    >
+      <AnchorLink
+        to="https://example.com"
+      >
+        My campaign
+      </AnchorLink>
+    </li>
+  </ol>
+</nav>
+`;
+
+exports[`CampaignBreadcrumbs new 1`] = `
+<nav
+  aria-label="breadcrumb"
+  className=""
+>
+  <ol
+    className="breadcrumb"
+  >
+    <li
+      aria-current="page"
+      className="breadcrumb-item active"
+    >
+      Campaigns
+    </li>
+  </ol>
+</nav>
+`;

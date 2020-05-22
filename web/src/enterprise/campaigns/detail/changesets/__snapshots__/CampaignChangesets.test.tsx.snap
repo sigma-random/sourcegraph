@@ -1,140 +1,155 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CampaignChangesets renders 1`] = `
-<Fragment>
+<div
+  className="card"
+>
   <div
-    className="form-inline mb-0 mt-2"
+    className="card-header"
   >
-    <label
-      htmlFor="changeset-state-filter"
+    <div
+      className="form-inline"
     >
-      State
-    </label>
-    <select
-      className="form-control mx-2"
-      id="changeset-state-filter"
-      onChange={[Function]}
-    >
-      <option
-        value=""
+      Filter UI is WIP
+      <label
+        className="sr-only"
+        htmlFor="changeset-state-filter"
       >
-        All
-      </option>
-      <option
-        key="OPEN"
-        value="OPEN"
+        State
+      </label>
+      <select
+        className="form-control mx-2"
+        id="changeset-state-filter"
+        onChange={[Function]}
       >
-        Open
-      </option>
-      <option
-        key="CLOSED"
-        value="CLOSED"
+        <option
+          value=""
+        >
+          State
+        </option>
+        <option
+          key="OPEN"
+          value="OPEN"
+        >
+          Open
+        </option>
+        <option
+          key="CLOSED"
+          value="CLOSED"
+        >
+          Closed
+        </option>
+        <option
+          key="MERGED"
+          value="MERGED"
+        >
+          Merged
+        </option>
+        <option
+          key="DELETED"
+          value="DELETED"
+        >
+          Deleted
+        </option>
+      </select>
+      <label
+        className="sr-only"
+        htmlFor="changeset-review-state-filter"
       >
-        Closed
-      </option>
-      <option
-        key="MERGED"
-        value="MERGED"
+        Review state
+      </label>
+      <select
+        className="form-control mx-2"
+        id="changeset-review-state-filter"
+        onChange={[Function]}
       >
-        Merged
-      </option>
-      <option
-        key="DELETED"
-        value="DELETED"
+        <option
+          value=""
+        >
+          Reviews
+        </option>
+        <option
+          key="APPROVED"
+          value="APPROVED"
+        >
+          Approved
+        </option>
+        <option
+          key="CHANGES_REQUESTED"
+          value="CHANGES_REQUESTED"
+        >
+          Changes requested
+        </option>
+        <option
+          key="PENDING"
+          value="PENDING"
+        >
+          Pending
+        </option>
+        <option
+          key="COMMENTED"
+          value="COMMENTED"
+        >
+          Commented
+        </option>
+        <option
+          key="DISMISSED"
+          value="DISMISSED"
+        >
+          Dismissed
+        </option>
+      </select>
+      <label
+        className="sr-only"
+        htmlFor="changeset-check-state-filter"
       >
-        Deleted
-      </option>
-    </select>
-    <label
-      htmlFor="changeset-review-state-filter"
-    >
-      Review state
-    </label>
-    <select
-      className="form-control mx-2"
-      id="changeset-review-state-filter"
-      onChange={[Function]}
-    >
-      <option
-        value=""
+        Check state
+      </label>
+      <select
+        className="form-control mx-2"
+        id="changeset-check-state-filter"
+        onChange={[Function]}
       >
-        All
-      </option>
-      <option
-        key="APPROVED"
-        value="APPROVED"
-      >
-        Approved
-      </option>
-      <option
-        key="CHANGES_REQUESTED"
-        value="CHANGES_REQUESTED"
-      >
-        Changes requested
-      </option>
-      <option
-        key="PENDING"
-        value="PENDING"
-      >
-        Pending
-      </option>
-      <option
-        key="COMMENTED"
-        value="COMMENTED"
-      >
-        Commented
-      </option>
-      <option
-        key="DISMISSED"
-        value="DISMISSED"
-      >
-        Dismissed
-      </option>
-    </select>
-    <label
-      htmlFor="changeset-check-state-filter"
-    >
-      Check state
-    </label>
-    <select
-      className="form-control mx-2"
-      id="changeset-check-state-filter"
-      onChange={[Function]}
-    >
-      <option
-        value=""
-      >
-        All
-      </option>
-      <option
-        key="PENDING"
-        value="PENDING"
-      >
-        Pending
-      </option>
-      <option
-        key="PASSED"
-        value="PASSED"
-      >
-        Passed
-      </option>
-      <option
-        key="FAILED"
-        value="FAILED"
-      >
-        Failed
-      </option>
-    </select>
+        <option
+          value=""
+        >
+          Checks
+        </option>
+        <option
+          key="PENDING"
+          value="PENDING"
+        >
+          Pending
+        </option>
+        <option
+          key="PASSED"
+          value="PASSED"
+        >
+          Passed
+        </option>
+        <option
+          key="FAILED"
+          value="FAILED"
+        >
+          Failed
+        </option>
+      </select>
+      <div
+        className="flex-1"
+      />
+    </div>
   </div>
   <div
-    className="list-group position-relative"
+    className="list-group list-group-flush position-relative"
   >
     <FilteredConnection
-      className="mt-2"
+      className=""
       defaultFirst={15}
       hideSearch={true}
       history="[History]"
+      listClassName="mb-0"
       location="[Location path=/]"
+      noSummaryIfAllNodesVisible={true}
       nodeComponent={[Function]}
       nodeComponentProps={
         Object {
@@ -166,5 +181,5 @@ exports[`CampaignChangesets renders 1`] = `
       useURLQuery={false}
     />
   </div>
-</Fragment>
+</div>
 `;

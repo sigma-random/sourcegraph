@@ -99,6 +99,7 @@ exports[`CampaignBurndownChart renders the chart 1`] = `
   width={500}
 >
   <ResponsiveContainer
+    className=""
     debounce={0}
     height={300}
     width={500}

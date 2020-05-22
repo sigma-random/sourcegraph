@@ -6,84 +6,76 @@ exports[`AddChangesetForm renders the form 1`] = `
   history="[History]"
   onAdd={[Function]}
 >
-  <h3
-    className="mb-2 mt-4"
-  >
-    Add changeset
-  </h3>
   <Form
+    className="form"
     onSubmit={[Function]}
   >
     <form
-      className=" "
+      className="form "
       onInvalid={[Function]}
       onSubmit={[Function]}
     >
       <div
-        className="d-flex"
+        className="form-group"
       >
-        <div
-          className="form-group mr-3 mb-0"
+        <label
+          htmlFor="changeset-repo"
         >
-          <label
-            htmlFor="changeset-repo"
-          >
-            Repository path
-          </label>
-          <input
-            className="form-control mr-1 e2e-track-changeset-repo"
-            id="changeset-repo"
-            onChange={[Function]}
-            placeholder="codehost.example.com/example-org/example-repository"
-            required={true}
-            size={35}
-            type="text"
-            value=""
-          />
-          <p
-            className="form-text text-muted"
-          >
-            The location of the repository in Sourcegraph. See the repository's directory URL:
-             
-            http:
-            //
-            localhost
-            /
-            <strong>
-              &lt;REPOSITORY_PATH&gt;
-            </strong>
-            <br />
-            (Depending on your instance's configuration the path may or may not contain the code host name)
-          </p>
-        </div>
-        <div
-          className="form-group mr-3 mb-0"
+          Repository path
+        </label>
+        <input
+          className="form-control mr-1 e2e-track-changeset-repo"
+          id="changeset-repo"
+          onChange={[Function]}
+          placeholder="codehost.example.com/example-org/example-repository"
+          required={true}
+          size={35}
+          type="text"
+          value=""
+        />
+        <p
+          className="form-text text-muted small"
         >
-          <label
-            htmlFor="changeset-number"
-          >
-            Changeset number
-          </label>
-          <input
-            className="form-control mr-1 e2e-track-changeset-id"
-            id="changeset-number"
-            min={1}
-            onChange={[Function]}
-            placeholder="1234"
-            required={true}
-            size={16}
-            step={1}
-            type="number"
-            value=""
-          />
-        </div>
+          The location of the repository in Sourcegraph. See the repository's directory URL:
+           
+          http:
+          //
+          localhost
+          /
+          <strong>
+            &lt;REPOSITORY_PATH&gt;
+          </strong>
+          <br />
+          (Depending on your instance's configuration the path may or may not contain the code host name)
+        </p>
+      </div>
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="changeset-number"
+        >
+          Changeset number
+        </label>
+        <input
+          className="form-control mr-1 e2e-track-changeset-id"
+          id="changeset-number"
+          min={1}
+          onChange={[Function]}
+          placeholder="1234"
+          required={true}
+          size={16}
+          step={1}
+          type="number"
+          value=""
+        />
       </div>
       <button
-        className="btn btn-primary mr-1 e2e-track-changeset-btn"
+        className="btn btn-primary e2e-track-changeset-btn"
         disabled={false}
         type="submit"
       >
-        Add changeset
+        Track existing changeset
       </button>
     </form>
   </Form>
