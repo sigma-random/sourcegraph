@@ -922,7 +922,7 @@ exports[`CampaignDetails editing existing 1`] = `
         "createdAt": "2020-01-01",
         "description": "d",
         "diffStat": Object {
-          "__typename": "IDiffStat",
+          "__typename": "DiffStat",
           "added": 5,
           "changed": 3,
           "deleted": 2,
@@ -968,7 +968,7 @@ exports[`CampaignDetails editing existing 1`] = `
         "createdAt": "2020-01-01",
         "description": "d",
         "diffStat": Object {
-          "__typename": "IDiffStat",
+          "__typename": "DiffStat",
           "added": 5,
           "changed": 3,
           "deleted": 2,
@@ -1377,7 +1377,7 @@ exports[`CampaignDetails viewerCanAdminister: false viewing existing 1`] = `
         "createdAt": "2020-01-01",
         "description": "d",
         "diffStat": Object {
-          "__typename": "IDiffStat",
+          "__typename": "DiffStat",
           "added": 5,
           "changed": 3,
           "deleted": 2,
@@ -1499,7 +1499,7 @@ exports[`CampaignDetails viewerCanAdminister: true viewing existing 1`] = `
         "createdAt": "2020-01-01",
         "description": "d",
         "diffStat": Object {
-          "__typename": "IDiffStat",
+          "__typename": "DiffStat",
           "added": 5,
           "changed": 3,
           "deleted": 2,
@@ -2069,7 +2069,7 @@ exports[`CampaignDetails viewerCanAdminister: true viewing existing 1`] = `
         "createdAt": "2020-01-01",
         "description": "d",
         "diffStat": Object {
-          "__typename": "IDiffStat",
+          "__typename": "DiffStat",
           "added": 5,
           "changed": 3,
           "deleted": 2,
@@ -2115,7 +2115,7 @@ exports[`CampaignDetails viewerCanAdminister: true viewing existing 1`] = `
         "createdAt": "2020-01-01",
         "description": "d",
         "diffStat": Object {
-          "__typename": "IDiffStat",
+          "__typename": "DiffStat",
           "added": 5,
           "changed": 3,
           "deleted": 2,
