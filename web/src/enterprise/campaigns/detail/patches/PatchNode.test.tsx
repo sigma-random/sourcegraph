@@ -1,8 +1,8 @@
 import * as H from 'history'
 import React from 'react'
 import { PatchNode } from './PatchNode'
-import { IPatch } from '../../../../../../shared/src/graphql/schema'
-import { Subject } from 'rxjs'
+import { IPatch, IFileDiffConnection } from '../../../../../../shared/src/graphql/schema'
+import { Subject, of } from 'rxjs'
 import { shallow } from 'enzyme'
 
 describe('PatchNode', () => {
@@ -39,6 +39,7 @@ describe('PatchNode', () => {
                     }
                     campaignUpdates={new Subject<void>()}
                     enablePublishing={enablePublishing}
+                    queryPatchFileDiffs={() => of({ __typename: 'FileDiffConnection' } as IFileDiffConnection)}
                 />
             )
         ).toMatchSnapshot()

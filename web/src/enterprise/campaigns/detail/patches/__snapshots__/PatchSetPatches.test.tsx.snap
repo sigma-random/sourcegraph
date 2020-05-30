@@ -18,6 +18,7 @@ exports[`PatchSetPatches renders 1`] = `
         "history": "[History]",
         "isLightTheme": true,
         "location": "[Location path=/campaigns]",
+        "queryPatchFileDiffs": undefined,
       }
     }
     noun="patch"

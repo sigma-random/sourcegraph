@@ -28,6 +28,7 @@ exports[`CampaignUpdateDiff renders 1`] = `
       },
     }
   }
+  queryPatchFileDiffs={[Function]}
 >
   <div>
     <h3
@@ -424,6 +425,7 @@ exports[`CampaignUpdateDiff renders a loader 1`] = `
       },
     }
   }
+  queryPatchFileDiffs={[Function]}
 >
   <div>
     <h3

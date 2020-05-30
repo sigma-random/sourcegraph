@@ -16,6 +16,10 @@ import {
     createCampaign,
     closeCampaign,
     fetchPatchSetById,
+    queryPatchesFromCampaign,
+    queryPatchesFromPatchSet,
+    queryChangesets,
+    queryPatchFileDiffs,
 } from './backend'
 import { useError, useObservable } from '../../../../../shared/src/util/useObservable'
 import { asError } from '../../../../../shared/src/util/errors'
@@ -87,6 +91,14 @@ interface Props extends ThemeProps, ExtensionsControllerProps, PlatformContextPr
     _fetchCampaignById?: typeof fetchCampaignById | ((campaign: GQL.ID) => Observable<Campaign | null>)
     /** For testing only. */
     _fetchPatchSetById?: typeof fetchPatchSetById | ((patchSet: GQL.ID) => Observable<PatchSet | null>)
+    /** For testing only. */
+    _queryPatchesFromCampaign?: typeof queryPatchesFromCampaign
+    /** For testing only. */
+    _queryPatchesFromPatchSet?: typeof queryPatchesFromPatchSet
+    /** For testing only. */
+    _queryPatchFileDiffs?: typeof queryPatchFileDiffs
+    /** For testing only. */
+    _queryChangesets?: typeof queryChangesets
 }
 
 /**
@@ -103,6 +115,10 @@ export const CampaignDetails: React.FunctionComponent<Props> = ({
     telemetryService,
     _fetchCampaignById = fetchCampaignById,
     _fetchPatchSetById = fetchPatchSetById,
+    _queryPatchesFromCampaign = queryPatchesFromCampaign,
+    _queryPatchesFromPatchSet = queryPatchesFromPatchSet,
+    _queryPatchFileDiffs = queryPatchFileDiffs,
+    _queryChangesets = queryChangesets,
 }) => {
     // State for the form in editing mode
     const [name, setName] = useState<string>('')
@@ -459,6 +475,7 @@ export const CampaignDetails: React.FunctionComponent<Props> = ({
                         <CampaignUpdateDiff
                             campaign={campaign}
                             patchSet={patchSet}
+                            queryPatchFileDiffs={queryPatchFileDiffs}
                             history={history}
                             location={location}
                             isLightTheme={isLightTheme}
@@ -574,6 +591,8 @@ export const CampaignDetails: React.FunctionComponent<Props> = ({
                                         campaignUpdates={campaignUpdates}
                                         changesetUpdates={changesetUpdates}
                                         enablePublishing={!campaign.closedAt && campaign.viewerCanAdminister}
+                                        queryPatchesFromCampaign={_queryPatchesFromCampaign}
+                                        queryPatchFileDiffs={_queryPatchFileDiffs}
                                         history={history}
                                         location={location}
                                         isLightTheme={isLightTheme}
@@ -585,6 +604,8 @@ export const CampaignDetails: React.FunctionComponent<Props> = ({
                                         changesetUpdates={changesetUpdates}
                                         // No publishing allowed in create view.
                                         enablePublishing={false}
+                                        queryPatchesFromPatchSet={_queryPatchesFromPatchSet}
+                                        queryPatchFileDiffs={_queryPatchFileDiffs}
                                         history={history}
                                         location={location}
                                         isLightTheme={isLightTheme}
@@ -595,6 +616,7 @@ export const CampaignDetails: React.FunctionComponent<Props> = ({
                                     campaign={campaign!}
                                     changesetUpdates={changesetUpdates}
                                     campaignUpdates={campaignUpdates}
+                                    queryChangesets={_queryChangesets}
                                     history={history}
                                     location={location}
                                     isLightTheme={isLightTheme}
