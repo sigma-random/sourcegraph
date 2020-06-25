@@ -701,6 +701,7 @@ Array [
     telemetryService={
       Object {
         "log": [Function],
+        "logViewEvent": [Function],
       }
     }
   />,
@@ -1076,6 +1077,7 @@ Array [
     telemetryService={
       Object {
         "log": [Function],
+        "logViewEvent": [Function],
       }
     }
   />,
@@ -1567,6 +1569,7 @@ Array [
     telemetryService={
       Object {
         "log": [Function],
+        "logViewEvent": [Function],
       }
     }
   />,
