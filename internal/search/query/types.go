@@ -1,9 +1,11 @@
 package query
 
 import (
+	"encoding/json"
 	"fmt"
 	"regexp"
 
+	"github.com/inconshreveable/log15"
 	"github.com/sourcegraph/sourcegraph/internal/search/query/syntax"
 	"github.com/sourcegraph/sourcegraph/internal/search/query/types"
 )
@@ -44,6 +46,7 @@ type QueryInfo interface {
 	BoolValue(field string) bool
 	IsCaseSensitive() bool
 	ParseTree() syntax.ParseTree
+	JSON() ([]byte, error)
 }
 
 // An ordinary query (not containing and/or expressions).
@@ -80,6 +83,13 @@ func (q OrdinaryQuery) BoolValue(field string) bool {
 }
 func (q OrdinaryQuery) IsCaseSensitive() bool {
 	return q.Query.IsCaseSensitive()
+}
+
+func (q OrdinaryQuery) JSON() ([]byte, error) {
+	log15.Info("originoal", "q", q.Query.String())
+	// json, err := json.Marshal(q.Query)
+	// log15.Info("look", "x", string(json))
+	return []byte("TODO"), nil
 }
 
 // AndOrQuery satisfies the interface for QueryInfo close to that of OrdinaryQuery.
@@ -183,6 +193,74 @@ func parseRegexpOrPanic(field, value string) *regexp.Regexp {
 		panic(fmt.Sprintf("Value %s for field %s invalid regex: %s", field, value, err.Error()))
 	}
 	return r
+}
+
+func toJSON(node Node) interface{} {
+	switch n := node.(type) {
+	case Operator:
+		if n.Kind == And {
+			var jsons []interface{}
+			for _, o := range n.Operands {
+				jsons = append(jsons, toJSON(o))
+			}
+			return struct {
+				AND []interface{} `json:"AND"`
+			}{
+				AND: jsons,
+			}
+		} else if n.Kind == Or {
+			var jsons []interface{}
+			for _, o := range n.Operands {
+				jsons = append(jsons, toJSON(o))
+			}
+			return struct {
+				OR []interface{} `json:"OR"`
+			}{
+				OR: jsons,
+			}
+		} else {
+			// Concat should already be processed, or is invalid.
+			panic("concat invalid here")
+		}
+	case Parameter:
+		return struct {
+			Field   string   `json:"field"`
+			Value   string   `json:"value"`
+			Negated bool     `json:"negated"`
+			Labels  []string `json:"labels"`
+			Range   Range    `json:"range"`
+		}{
+			Field:   n.Field,
+			Value:   n.Value,
+			Negated: n.Negated,
+			Labels:  Strings(n.Annotation.Labels),
+			Range:   n.Annotation.Range,
+		}
+	case Pattern:
+		return struct {
+			Value   string   `json:"value"`
+			Negated bool     `json:"negated"`
+			Labels  []string `json:"labels"`
+			Range   Range    `json:"range"`
+		}{
+			Value:   n.Value,
+			Negated: n.Negated,
+			Labels:  Strings(n.Annotation.Labels),
+			Range:   n.Annotation.Range,
+		}
+	}
+	// unreachable
+	return struct{}{}
+}
+
+func (q AndOrQuery) JSON() ([]byte, error) {
+	var jsons []interface{}
+	for _, node := range q.Query {
+		jsons = append(jsons, toJSON(node))
+	}
+	json, err := json.Marshal(jsons)
+	log15.Info("look", "x", string(json))
+	return json, err
 }
 
 // valueToTypedValue approximately preserves the field validation for

@@ -8,6 +8,8 @@ import (
 	"strings"
 	"unicode"
 	"unicode/utf8"
+
+	"github.com/inconshreveable/log15"
 )
 
 /*
@@ -675,6 +677,7 @@ func (p *parser) ParseParameter() (Parameter, bool, error) {
 	if err != nil {
 		return Parameter{}, false, err
 	}
+	log15.Info("param range", "r", fmt.Sprintf("%d", p.pos))
 	return Parameter{
 		Field:      field,
 		Value:      value,
